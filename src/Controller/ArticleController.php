@@ -18,7 +18,7 @@ class ArticleController extends Controller
             'path' => 'src/Controller/ArticleController.php',
         ]);*/
 
-        return new Response("Hello");
+        return $this->render('article/index.html.twig');
     }
 
 	/**
@@ -27,8 +27,18 @@ class ArticleController extends Controller
 
     public function show($slug): Response
     {
-	    return new Response(
-	    	sprintf("New Article: %s", $slug)
+
+	    $comments = [
+		    'I ate a normal rock once. It did NOT taste like bacon!',
+		    'Woohoo! I\'m going on an all-asteroid diet!',
+		    'I like bacon too! Buy some from my site! bakinsomebacon.com',
+	    ];
+
+	    return $this->render('article/show.html.twig',
+		    [
+		    	'title' => ucwords(str_replace("-"," ", $slug)),
+			    'comments' => $comments
+		    ]
 	    );
     }
 }
