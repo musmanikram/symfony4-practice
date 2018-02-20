@@ -22,7 +22,7 @@ class ArticleController extends Controller
     }
 
 	/**
-	 * @Route("/news/{slug}")
+	 * @Route("/news/{slug}", name="article_show")
 	 */
 
     public function show($slug): Response
